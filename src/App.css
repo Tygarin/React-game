@@ -1,0 +1,32 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+button, a {
+  cursor: pointer;
+}
+.wrapper {
+  margin-top: 250px;
+}
+.registration, .authorization {
+  margin: 0 auto;
+  width: 200px;
+  text-align: center;
+}
+.registration p, .authorization p {
+  color: red;
+  font-size: 10px;
+}
+form input {
+  margin: 5px 0;
+  padding: 5px;
+}
+.reg_btn {
+  cursor: pointer;
+}
+.log_btn {
+  cursor: pointer;
+}
+a{
+  font-size: 10px;
+}
