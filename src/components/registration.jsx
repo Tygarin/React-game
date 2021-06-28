@@ -48,7 +48,7 @@ export default class Registration extends React.Component {
             })
         }
         if(result.status == true) {
-            this.reDirect()
+            this.props.history.push('/login')
         }
     }
     render() {

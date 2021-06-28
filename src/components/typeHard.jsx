@@ -24,6 +24,11 @@ export default class TypeHard extends React.Component {
             })
         });
         let result = await response.json();
+        localStorage.setItem('options', JSON.stringify(result.data.options))
+        localStorage.setItem('points', result.data.points)
+        localStorage.setItem('question', result.data.question)
+        localStorage.setItem('time', result.data.time)
+        localStorage.setItem('type_hard', this.state.type_hard)
         if(result.status == true) {
             this.props.history.push('/game')
         }
