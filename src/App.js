@@ -2,6 +2,8 @@ import './App.css';
 import React from 'react';
 import Login from './components/login';
 import Registration from './components/registration';
+import TypeHard from './components/typeHard';
+
 import {
   Route,
   Switch,
@@ -17,6 +19,7 @@ class App extends React.Component{
         <Switch>
             <Route history={history} exac path='/login' component={Login} />
             <Route history={history} path='/registration' component={Registration} />
+            <Route history={history} path='/typehard' component={TypeHard} />
             <Redirect from='/' to='/login'/>
         </Switch>
       </div>

@@ -9,7 +9,8 @@ export default class Registration extends React.Component {
             email                 : '',
             password              : '',
             password_confirmation : '',
-            errors                : ''
+            errors                : '',
+            access_token          : ''
         }
     }
     handleChangeName = (event) => {
@@ -24,6 +25,9 @@ export default class Registration extends React.Component {
     }
     handleChangePasswordConfirmation = (event) => {
         this.setState({password_confirmation: event.target.value});
+    }
+    reDirect = () => {
+        this.props.history.push('/login')
     }
     onRegistration = async () => {
         let response = await fetch('https://internsapi.public.osora.ru/api/auth/signup', {
@@ -45,9 +49,9 @@ export default class Registration extends React.Component {
                 errors : result.errors
             })
         }
-    }
-    reDirect = () => {
-        this.props.history.push('/login')
+        if(result.status == true) {
+            this.reDirect()
+        }
     }
     render() {
         return(

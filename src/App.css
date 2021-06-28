@@ -30,3 +30,22 @@ form input {
 a{
   font-size: 10px;
 }
+.typehard {
+  text-align: center;
+}
+.typehard select {
+  width: 120px;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.typehard input {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: red;
+  border: none;
+  color: white;
+  cursor: pointer;
+}

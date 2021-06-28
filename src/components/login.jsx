@@ -35,6 +35,11 @@ export default class Login extends React.Component {
                 errors : result.errors
             })
         }
+        if(result.status == true) {
+            localStorage.setItem('token', result.data.access_token)
+            this.props.history.push('/typehard')
+            console.log(result.data.access_token);
+        }
     }
     reDirect = () => {
         this.props.history.push('/registration')
