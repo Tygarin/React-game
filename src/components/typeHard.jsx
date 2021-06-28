@@ -24,6 +24,9 @@ export default class TypeHard extends React.Component {
             })
         });
         let result = await response.json();
+        if(result.status == true) {
+            this.props.history.push('/game')
+        }
         console.log(result);
         console.log(token);
     }

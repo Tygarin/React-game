@@ -1,5 +1,6 @@
 import '../App.css';
 import React from 'react';
+import {Link} from "react-router-dom"
 
 export default class Registration extends React.Component {
     constructor(props) {
@@ -25,9 +26,6 @@ export default class Registration extends React.Component {
     }
     handleChangePasswordConfirmation = (event) => {
         this.setState({password_confirmation: event.target.value});
-    }
-    reDirect = () => {
-        this.props.history.push('/login')
     }
     onRegistration = async () => {
         let response = await fetch('https://internsapi.public.osora.ru/api/auth/signup', {
@@ -66,7 +64,7 @@ export default class Registration extends React.Component {
                         <p>{this.state.errors}</p>
                         <input type="button" onClick={this.onRegistration} className="reg_btn" value="Зарегистрироваться" />
                         <br />
-                        <a onClick={this.reDirect}>Войти в аккаунт</a>
+                        <Link to='/login'>Войти в аккаунт</Link>
                     </form>
                 </div>
             </div>

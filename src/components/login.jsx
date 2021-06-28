@@ -1,5 +1,6 @@
 import '../App.css';
 import React from 'react';
+import {Link} from "react-router-dom"
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -41,9 +42,6 @@ export default class Login extends React.Component {
             console.log(result.data.access_token);
         }
     }
-    reDirect = () => {
-        this.props.history.push('/registration')
-    }
     render() {
         return(
             <div className="wrapper">
@@ -55,7 +53,7 @@ export default class Login extends React.Component {
                         <p>{this.state.errors}</p>
                         <input type="button" id="log_btn" className="log_btn" value="Войти" onClick={this.onLogin}/>
                         <br />
-                        <a onClick={this.reDirect}>Нет аккаунта? Создайте!</a>
+                        <Link to='/registration'>Нет аккаунта? Создайте!</Link>
                     </form>
                 </div>
             </div>
