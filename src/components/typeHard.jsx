@@ -37,7 +37,7 @@ export default class TypeHard extends React.Component {
     }
     handleChangeTypeHard = (e) => {
         this.setState({
-            type_hard : e.target.value
+            type_hard : e.target.value - 1
         })
     }
     render() {

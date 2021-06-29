@@ -19,7 +19,6 @@ class App extends React.Component{
     const { history } = this.props
     return (
       <Router>
-        <div className="wrapper">
           <Switch>
               <Route history={history} exac path='/login' component={Login} />
               <Route history={history} path='/registration' component={Registration} />
@@ -28,7 +27,6 @@ class App extends React.Component{
               <Route history={history} path='/result' component={Result} />
               <Redirect from='/' to='/login'/>
           </Switch>
-        </div>
       </Router>
     )
   }

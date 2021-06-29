@@ -56,9 +56,9 @@ export default class Game extends React.Component {
                 localStorage.setItem('time', result.data.time)
                 localStorage.setItem('type_hard', this.state.type_hard)
             } else {
-                this.props.history.push('/result')
                 localStorage.setItem('points', result.data.points)
                 localStorage.setItem('questions', JSON.stringify(result.data.questions))
+                this.props.history.push('/result')
             }  
         } 
         this.setState({
