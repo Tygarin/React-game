@@ -73,3 +73,14 @@ a{
   padding: 10px;
   margin: 0 10px;
 }
+.result {
+  text-align: center;
+}
+.result table {
+  margin: 0 auto;
+  color: aliceblue;
+}
+.result table colgroup col{
+  background:gray;
+  
+}
