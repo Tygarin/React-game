@@ -14,8 +14,13 @@ export default class Game extends React.Component {
             answer: 0
         }
     }
-    componentDidMount() {
-        this.timeout()
+    componentWillMount() {
+        let checkAauth = setInterval(() => {
+            if(!localStorage.getItem('token')){
+                this.props.history.push('/login')
+                clearInterval(checkAauth)
+        } 
+        }, 1000)
     }
     timeout = () => {
         let time = setInterval(() => {

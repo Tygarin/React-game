@@ -8,8 +8,7 @@ export default class Login extends React.Component {
         this.state = {
             email    : '',
             password : '',
-            emailErrors   : [],
-            passwordErrors   : []
+            errors  :   []
         }
     }
     handleChangeEmail = (event) => {
@@ -32,12 +31,20 @@ export default class Login extends React.Component {
         });
         let result = await response.json();
         console.log(result);
-        if(result.errors) {
-            this.setState({
-               emailErrors : result.errors.email,
-               passwordErrors : result.errors.password 
-            })
+        let errorsArr = []
+        if(result.errors === "Unauthorized") {
+            errorsArr.push(result.errors)
         } 
+        if(result.errors.email !== undefined) {
+            errorsArr.push(result.errors.email)
+        } 
+        if(result.errors.password !== undefined) {
+            errorsArr.push(result.errors.password)
+        } 
+        this.setState({
+            errors: errorsArr
+        })
+        console.log(this.state.errors);
         if(result.status == true) {
             localStorage.setItem('token', result.data.access_token)
             this.props.history.push('/typehard')
@@ -52,7 +59,7 @@ export default class Login extends React.Component {
                     <form name="authorization_form" id="authorization_form" className="authorization_form">
                         <input type="email" name="email" onChange={this.handleChangeEmail} placeholder="Введите email"/>
                         <input type="password" name="password" onChange={this.handleChangePassword} placeholder="Введите пароль"/>
-                        
+                        <p>{this.state.errors}</p>
                         <input type="button" id="log_btn" className="log_btn" value="Войти" onClick={this.onLogin}/>
                         <br />
                         <Link to='/registration'>Нет аккаунта? Создайте!</Link>

@@ -11,6 +11,14 @@ export default class Result extends React.Component {
             type: 2
         }
     }
+    componentWillMount() {
+        let checkAauth = setInterval(() => {
+            if(!localStorage.getItem('token')){
+                this.props.history.push('/login')
+                clearInterval(checkAauth)
+        } 
+        }, 1000)
+    }
     logout = () => {
         localStorage.clear()
     }

@@ -1,5 +1,6 @@
 import '../App.css';
 import React from 'react';
+import {Link} from "react-router-dom"
 
 export default class TypeHard extends React.Component {
     constructor(props) {
@@ -8,6 +9,14 @@ export default class TypeHard extends React.Component {
             type_hard : 1,
             type : 1
         }
+    }
+    componentWillMount() {
+        let checkAauth = setInterval(() => {
+            if(!localStorage.getItem('token')){
+                this.props.history.push('/login')
+                clearInterval(checkAauth)
+        } 
+        }, 1000)
     }
     onStart = async () => {
         let token = localStorage.getItem('token');
@@ -31,6 +40,8 @@ export default class TypeHard extends React.Component {
         localStorage.setItem('type_hard', this.state.type_hard)
         if(result.status == true) {
             this.props.history.push('/game')
+        } else {
+            this.props.history.push('/login')
         }
         console.log(result);
         console.log(token);
@@ -39,6 +50,9 @@ export default class TypeHard extends React.Component {
         this.setState({
             type_hard : e.target.value - 1
         })
+    }
+    logout = () => {
+        localStorage.clear()
     }
     render() {
         return (
@@ -53,6 +67,8 @@ export default class TypeHard extends React.Component {
                     </select>
                     <br />
                     <input type="button" value="Start" onClick={this.onStart} />
+                    <br />
+                    <Link to='/login'><input type="button" onClick={this.logout} value="Log out" /></Link>
                 </div>
             </div>
         )

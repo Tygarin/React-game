@@ -10,7 +10,7 @@ export default class Registration extends React.Component {
             email                 : '',
             password              : '',
             password_confirmation : '',
-            errors                : '',
+            errors                : [],
             access_token          : ''
         }
     }
@@ -41,14 +41,26 @@ export default class Registration extends React.Component {
             })
         });
         let result = await response.json();
-        console.log(result);
-        if(result.errors) {
-            this.setState({
-                errors : result.errors
-            })
-        }
+        console.log(result.errors);
         if(result.status == true) {
             this.props.history.push('/login')
+        } else {
+            let errorsArr = []
+            if(result.errors === "Unauthorized") {
+                errorsArr.push(result.errors)
+            } 
+            if(result.errors.email !== undefined) {
+                errorsArr.push(result.errors.email)
+            } 
+            if(result.errors.name !== undefined) {
+                errorsArr.push(result.errors.name)
+            } 
+            if(result.errors.password !== undefined) {
+                errorsArr.push(result.errors.password)
+            } 
+            this.setState({
+                errors: errorsArr
+            })
         }
     }
     render() {
